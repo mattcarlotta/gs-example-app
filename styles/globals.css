@@ -11,6 +11,13 @@ a {
   text-decoration: none;
 }
 
+pre {
+  background: #ebebeb;
+  overflow-y: auto;
+  margin: 0;
+  padding: 10px;
+}
+
 * {
   box-sizing: border-box;
 }
