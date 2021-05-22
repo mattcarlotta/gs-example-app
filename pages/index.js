@@ -1,11 +1,12 @@
+import isEmpty from "lodash.isempty";
+
 function Index({ data, error }) {
-  return (
-    <>
-      {error && <p>{error}</p>}
-      <pre>
-        <code>{JSON.stringify(data, null, 2)}</code>
-      </pre>
-    </>
+  return error ? (
+    <p>{error}</p>
+  ) : (
+    <pre>
+      <code>{JSON.stringify(data, null, 2)}</code>
+    </pre>
   );
 }
 
@@ -26,7 +27,12 @@ export async function getStaticProps() {
       }
     );
 
+    if (res.status !== 200)
+      throw String(`Invalid server response: ${res.status} ${res.statusText}`);
+
     data = await res.json();
+
+    if (isEmpty(data)) throw String("No data was found!");
   } catch (e) {
     error = e.toString();
   }

@@ -11,6 +11,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  color: red;
+}
+
 pre {
   background: #ebebeb;
   overflow-y: auto;
